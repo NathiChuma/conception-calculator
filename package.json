@@ -1,7 +1,6 @@
 {
   "homepage": "https://nathichuma.github.io/conception-calculator",
   "name": "conception-calculator",
-  "private": true,
   "type": "module",
   "pkg": {
     "assets": [
