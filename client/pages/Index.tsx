@@ -187,7 +187,7 @@ export default function Index() {
                 </Link>
               </div>
               <div className="flex flex-wrap justify-center gap-6 text-xs text-muted-foreground pt-4">
-                <span>© 2025 Conception Calculator</span>
+                <span>© 2024 Conception Calculator</span>
                 <span>•</span>
                 <span>Made with ❤️ for curious minds</span>
                 <span>•</span>
