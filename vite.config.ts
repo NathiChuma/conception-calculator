@@ -5,15 +5,15 @@ import { createServer } from "./server";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  server: {
+  /*server: {
     host: "::",
     port: 8080,
   },
   build: {
     outDir: "dist/spa",
-  },
-  plugins: [react(), expressPlugin()],
-  base: "/conception-calculator/",
+  },*/
+  plugins: [react()/*, expressPlugin()*/],
+  base: "./" ,
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client"),
@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
   },
 }));
 
-function expressPlugin(): Plugin {
+/*function expressPlugin(): Plugin {
   return {
     name: "express-plugin",
     apply: "serve", // Only apply during development (serve mode)
@@ -33,4 +33,4 @@ function expressPlugin(): Plugin {
       server.middlewares.use(app);
     },
   };
-}
+}*/
