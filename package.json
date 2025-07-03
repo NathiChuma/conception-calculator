@@ -21,7 +21,7 @@
     "format.fix": "prettier --write .",
     "typecheck": "tsc",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist/spa"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "express": "^4.18.2",
