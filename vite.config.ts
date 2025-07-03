@@ -13,7 +13,6 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist/spa",
   },
   plugins: [react(), expressPlugin()],
-  base: "/conception-calculator",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client"),
