@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import html2canvas from "html2canvas";
+import { useRef } from "react";
 
 interface ResultData {
   conceptionWeek: { start: Date; end: Date; center: Date };
@@ -35,6 +37,8 @@ export function ConceptionResults({
   results,
   birthDate,
 }: ConceptionResultsProps) {
+  const resultsRef = useRef<HTMLDivElement>(null);
+
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-US", {
       weekday: "long",
@@ -57,8 +61,32 @@ export function ConceptionResults({
     }
   };
 
+  const handleSaveAsImage = async () => {
+    if (!resultsRef.current) return;
+
+    try {
+      const canvas = await html2canvas(resultsRef.current, {
+        backgroundColor: '#f8fafc',
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+      });
+
+      const link = document.createElement('a');
+      link.download = `conception-calculator-results-${new Date().toISOString().split('T')[0]}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (error) {
+      console.error('Error generating image:', error);
+      alert('Sorry, there was an error saving the image. Please try again.');
+    }
+  };
+
   return (
-    <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in-50 duration-500">
+    <div
+      ref={resultsRef}
+      className="max-w-4xl mx-auto space-y-6 animate-in fade-in-50 duration-500"
+    >
       {/* Conception Date Card */}
       <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 pointer-events-none" />
@@ -93,6 +121,7 @@ export function ConceptionResults({
               Share Results
             </Button>
             <Button
+              onClick={handleSaveAsImage}
               variant="outline"
               size="sm"
               className="flex items-center gap-2"

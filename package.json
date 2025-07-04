@@ -4,7 +4,7 @@
   "type": "module",
   "pkg": {
     "assets": [
-      "dist/spa/*"
+      "dist/*"
     ],
     "scripts": [
       "dist/server/**/*.js"
@@ -20,10 +20,11 @@
     "format.fix": "prettier --write .",
     "typecheck": "tsc",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist/spa"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "express": "^4.18.2",
+    "html2canvas": "^1.4.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
